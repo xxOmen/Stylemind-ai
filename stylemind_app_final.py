@@ -21,7 +21,7 @@ with st.form("style_form"):
     submitted = st.form_submit_button("Generate Outfit Images")
 
 if submitted:
-    prompt = f"A flat lay of a {style.lower()} outfit for a {gender.lower()} attending a {occasion.lower()} in {season.lower()}. Include top, bottom, shoes, and 1–2 accessories on a clean background."
+    prompt = "Flat lay of a casual summer outfit: white t-shirt, beige chinos, white sneakers, sunglasses. Displayed on a clean beige background."
 
     image_urls = []
     with st.spinner("Generating 1 outfit image with DALL·E 3..."):
