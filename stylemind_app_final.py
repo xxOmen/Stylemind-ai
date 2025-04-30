@@ -24,7 +24,7 @@ if submitted:
     prompt = f"A flat lay of a {style.lower()} outfit for a {gender.lower()} attending a {occasion.lower()} in {season.lower()}. Include top, bottom, shoes, and 1–2 accessories on a clean background."
 
     image_urls = []
-    with st.spinner("Generating 4 outfit images with DALL·E 3..."):
+    with st.spinner("Generating 1 outfit image with DALL·E 3..."):
         try:
             response = openai.images.generate(
                 model="dall-e-3",
@@ -36,14 +36,9 @@ if submitted:
             image_urls.append(response.data[0].url)
         except Exception as e:
             st.error(f"Error generating image: {e}")
-            except Exception as e:
-                st.error(f"Error generating image: {e}")
 
     if image_urls:
-        st.success("Here are your outfit suggestions!")
-        cols = st.columns(2)
-        for i, url in enumerate(image_urls):
-            with cols[i % 2]:
-                st.image(url, caption=f"Outfit Suggestion {i+1}", use_column_width=True)
+        st.success("Here is your outfit suggestion!")
+        st.image(image_urls[0], caption="Outfit Suggestion", use_column_width=True)
     else:
-        st.warning("No images were generated. Please try again.")
+        st.warning("No image was generated. Please try again.")
