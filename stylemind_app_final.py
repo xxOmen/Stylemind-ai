@@ -25,16 +25,17 @@ if submitted:
 
     image_urls = []
     with st.spinner("Generating 4 outfit images with DALL·E 3..."):
-        for _ in range(4):
-            try:
-                response = openai.images.generate(
-                    model="dall-e-3",
-                    prompt=prompt,
-                    size="1024x1024",
-                    quality="standard",
-                    n=1
-                )
-                image_urls.append(response.data[0].url)
+        try:
+            response = openai.images.generate(
+                model="dall-e-3",
+                prompt=prompt,
+                size="1024x1024",
+                quality="standard",
+                n=1
+            )
+            image_urls.append(response.data[0].url)
+        except Exception as e:
+            st.error(f"Error generating image: {e}")
             except Exception as e:
                 st.error(f"Error generating image: {e}")
 
